@@ -62,7 +62,7 @@ with open(CSV_PATH) as csv_file:
             greatest_decrease[1]=net_change
 
 #Find the average Profit and Loss Change
-profit_loss_average_change = sum(profit_loss_changes)/len(profit_loss_changes)
+profit_loss_average_change = round(sum(profit_loss_changes)/len(profit_loss_changes),2)
 count_of_months = count_of_months + 1
 net_profit_loss = net_profit_loss + copy_of_prev_net
 
@@ -72,7 +72,7 @@ f"\nFinancial Analysis\n"
 f"------------------------------------------------\n"
 f"Total Number of Months : {count_of_months}\n"
 f"Total: ${net_profit_loss}\n"
-f"Average Change: {profit_loss_average_change}\n"
+f"Average Change: {float(profit_loss_average_change)}\n"
 f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n"
 f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n"
 )
