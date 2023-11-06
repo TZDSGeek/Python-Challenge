@@ -3,7 +3,6 @@ import csv
 import os
 
 # Define the variables for Pybank
-
 months = []
 profit_loss_changes = []
 
@@ -72,7 +71,7 @@ f"\nFinancial Analysis\n"
 f"------------------------------------------------\n"
 f"Total Number of Months : {count_of_months}\n"
 f"Total: ${net_profit_loss}\n"
-f"Average Change: {float(profit_loss_average_change)}\n"
+f"Average Change: ${float(profit_loss_average_change)}\n"
 f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n"
 f"Greatest Decrease in Profits: {greatest_decrease[0]} (${greatest_decrease[1]})\n"
 )
