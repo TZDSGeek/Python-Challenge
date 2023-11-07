@@ -67,7 +67,7 @@ net_profit_loss = net_profit_loss + copy_of_prev_net
 analysis = (   
 f"Financial Analysis\n\n"
 f"------------------------------------------------\n\n"
-f"Total Number of Months : {count_of_months}\n\n"
+f"Total Months : {count_of_months}\n\n"
 f"Total: ${net_profit_loss}\n\n"
 f"Average Change: ${float(profit_loss_average_change)}\n\n"
 f"Greatest Increase in Profits: {greatest_increase[0]} (${greatest_increase[1]})\n\n"
