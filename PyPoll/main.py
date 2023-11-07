@@ -2,10 +2,10 @@
 import csv
 import os
 
-# configure the play button path
+# set the file path for the "play button"
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
-#List the contstants:
+# List the contstants:
 CSV_PATH=os.path.join("Resources","election_data.csv")
 ANALYSIS_PATH=os.path.join("Analysis","results_analysis.txt")
 
@@ -22,7 +22,7 @@ with open(CSV_PATH) as csv_file:
 # Read the header row
     row_headers = next(csv_file)
 
-# Election Anlysis: 
+# Election Analysis: 
 #-----------------------------------------------------------------------------------------------
 #The total number of votes cast
 #A complete list of candidates who received votes
@@ -40,7 +40,7 @@ with open(CSV_PATH) as csv_file:
         # Retrieve the candidate name from each row
         candidate_name = row[2]
 
-        #Determine if all candidates are included in the list of candidates and add the ones missing
+        #Determine if all candidates are included in the list of candidates, and add the ones missing
         if (candidate_name not in candidates):
             candidates.append(candidate_name)
 
@@ -50,14 +50,13 @@ with open(CSV_PATH) as csv_file:
         # begin aggregating the votes per candidate
         candidate_votes[candidate_name] += 1
     
-    # Save the results to the results_analysis text file
+# Create the Output summary for the Total votes,print to the termnial, and write the results in the text file    
 with open(ANALYSIS_PATH,"w") as txt_file:
-    # Create the Output summary for the Total votes,print to the termnial, and write the results in the text file
     total = (
-        f"\n Election Results\n"
-        f"------------------------------"
-        f"\nTotal Votes: {total_votes}\n"
+        f"Election Results\n\n"
         f"------------------------------\n"
+        f"\nTotal Votes: {total_votes}\n\n"
+        f"------------------------------\n\n"
     )
 
     print(total)
@@ -71,7 +70,7 @@ with open(ANALYSIS_PATH,"w") as txt_file:
         vote_percentage = (float(votes_per_candidate)/float(total_votes)*100)
 
          #Create the Output Summary, print the result to the terminal, and write in the text file        
-        votes_per_candidate_summary =(f"{x}: {vote_percentage:.3f}% ({votes_per_candidate})\n")
+        votes_per_candidate_summary =(f"{x}: {vote_percentage:.3f}% ({votes_per_candidate})\n\n")
         print(votes_per_candidate_summary)
         txt_file.write(votes_per_candidate_summary)
 
@@ -80,8 +79,11 @@ with open(ANALYSIS_PATH,"w") as txt_file:
             winning_count_of_votes = votes_per_candidate
             winning_candidate = x
 
-    #Create the Output Summary, print the result to the terminal, and write in the text file
-    winner=(f"\nWinner:{winning_candidate}\n")  
+    #Create the output for the winning cadndiate, print the result to the terminal, and write in the text file
+    winner=(
+        f"------------------------------\n\n"
+        f"\nWinner: {winning_candidate}\n\n\n"
+        f"------------------------------\n\n")  
     print(f'Winner: {winning_candidate}')
     txt_file.write(winner)
 
